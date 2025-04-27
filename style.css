@@ -1,0 +1,82 @@
+body {
+    background-color: #F5EFEB;
+    color: rgb(0, 0, 0);
+    overflow: auto;   /* ทำให้เลื่อนในแนวตั้งได้ */
+}
+.julius-sans-one-regular {
+    font-family: "Julius Sans One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.spacing-top {
+    margin-top: 120px;
+}
+
+.botton-top {
+    margin-top: 90px;
+}
+
+.Text-Aboutme{
+    margin-top: 20px;
+}
+
+.navbar {
+    background-color: #2F4156;
+}
+
+.navbar-brand {
+    font-family: "Julius Sans One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.navbar-nav .nav-item:hover {
+    background-color: #567CBD ;
+    /* สีม่วง */
+}
+.footer {
+    background-color: #2F4156;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+    margin-top: 126px;
+    /* เพิ่มระยะห่างระหว่าง footer และปุ่ม */
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .social-icon {
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer .social-icon img {
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.footer .social-icon:hover img {
+    transform: scale(1.1);
+    /* ขยายไอคอนเมื่อ hover */
+}
+
+.footer p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+
+section {
+    margin: 20px;
+}

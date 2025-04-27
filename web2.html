@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>photo 1</title>
+    <style>
+        .julius-sans-one-regular {
+            font-family: "Julius Sans One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        #web .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            /* ชิดบน */
+            gap: 40px;
+            padding: 40px;
+            text-align: left;
+            flex-wrap: wrap;
+        }
+
+        .image-slider {
+            position: relative;
+            width: 351px;
+            height: 631px;
+            overflow: hidden;
+        }
+
+        .image-slider .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .image-slider img {
+            width: 351px;
+            height: 631px;
+            object-fit: cover;
+            /* แสดงเต็มโดยไม่ผิดสัดส่วน */
+            flex-shrink: 0;
+            display: none;
+        }
+
+        .image-slider img.active {
+            display: block;
+        }
+
+        .image-slider .prev,
+        .image-slider .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        .image-slider .prev {
+            left: 0;
+        }
+
+        .image-slider .next {
+            right: 0;
+        }
+
+        .text-content {
+            max-width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- เมนู -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light fw-semibold mx-3 julius-sans-one-regular" href="#">PIMRAWEE</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link text-light fw-semibold mx-3 julius-sans-one-regular"
+                            href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light fw-semibold mx-3 julius-sans-one-regular" href="resume.html">ABOUT
+                            ME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light fw-semibold mx-3 julius-sans-one-regular"
+                            href="resume.html">PROJECT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light fw-semibold mx-3 julius-sans-one-regular"
+                            href="resume.html">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ส่วนเนื้อหาหลัก -->
+    <section id="web" class="spacing-top" style="text-align: center;">
+        <div class="container">
+            <!-- รูปฝั่งซ้าย -->
+            <div class="image-slider">
+                <button class="prev">&#10094;</button>
+                <div class="slider">
+                    <img src="pic\web21.jpg" class="slide" alt="รูปที่ 2">
+                    <img src="pic\web22.jpg" class="slide" alt="รูปที่ 3">
+                    <img src="pic\web23.jpg" class="slide" alt="รูปที่ 3">
+                    <img src="pic\web24.jpg" class="slide" alt="รูปที่ 3">
+                </div>
+                <button class="next">&#10095;</button>
+            </div>
+
+
+            <!-- ข้อความฝั่งขวา -->
+            <div class="text-content julius-sans-one-regular fw-bold" style="color: #2F4156;">
+                <h2>Repair and Request</h2>
+                <p class="julius-sans-one-regular" style="color:#555;"">To fulfill the requirements of the Co-operative Education course, and considering the Computer Department's responsibility for providing computer and IT services, we are interested in developing an efficient computer repair request system. Currently, repair requests made through paper documents or non-standardized systems can lead to delays and errors in data recording, as well as difficulties in tracking the progress. Therefore, we are interested in creating a computer repair request system that enhances convenience and speed, reduces the time spent on the repair request process, and allows for tracking the repair status. This system will also aim to reduce data redundancy or loss by enabling clear and comprehensive problem reporting through the system. By developing the system on AppSheet, we can potentially reduce paper resource costs, time, and labor involved in managing repair tasks.</p>
+                <p class=" julius-sans-one-regular">Tools: </p>
+                <ul class="description" style="color:#555;">
+                    <li>Database: Google Sheet</li>
+                    <li>Tool: Appsheet</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            const slides = document.querySelectorAll('.slide');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+
+            document.querySelector('.prev').addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            });
+
+            document.querySelector('.next').addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            });
+
+            // แสดงรูปแรก
+            showSlide(currentIndex);
+        </script>
+
+    </section>
+    <!-- ส่วนท้ายของเว็บ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row text-center">
+                <!-- ไอคอนโซเชียล -->
+                <div class="col-12">
+                    <a href="https://github.com/Pimrawee2560" target="_blank" class="social-icon">
+                        <img src="pic\github.png" alt="github" width="40" height="40">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
